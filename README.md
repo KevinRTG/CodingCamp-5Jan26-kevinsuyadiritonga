@@ -4,7 +4,10 @@ A simple and responsive **To-Do List Web Application** built with **HTML**, **Ta
 This app allows users to add, mark as completed, delete tasks, and persist data using **localStorage**.
 
 ---
+## 🖼️ Preview
+[To-Do List Preview](https://github.com/KevinRTG/CodingCamp-6Jan26-kevinsuyadiritonga/blob/main/images/todolistapp-preview.png)
 
+---
 ## 🚀 Features
 - ➕ Add new tasks
 - ✅ Mark tasks as completed
