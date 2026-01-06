@@ -5,7 +5,7 @@ This app allows users to add, mark as completed, delete tasks, and persist data 
 
 ---
 ## 🖼️ Preview
-[To-Do List Preview](https://github.com/KevinRTG/CodingCamp-6Jan26-kevinsuyadiritonga/blob/main/images/todolistapp-preview.png)
+![To-Do List Preview](https://github.com/KevinRTG/CodingCamp-6Jan26-kevinsuyadiritonga/blob/main/images/todolistapp-preview.png)
 
 ---
 ## 🚀 Features
