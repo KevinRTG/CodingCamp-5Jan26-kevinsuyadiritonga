@@ -35,7 +35,7 @@ function renderTasks() {
     // Label
     const span = document.createElement("span");
     span.textContent = task.text;
-    span.className = task.completed ? "line-through text-gray-400 flex-1" : "flex-1";
+    span.className = task.completed ? "line-through text-red-400 flex-1" : "flex-1";
 
     // Delete button
     const delBtn = document.createElement("button");

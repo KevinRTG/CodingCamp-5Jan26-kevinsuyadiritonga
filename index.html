@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>To-Do List App</title>
     <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Custom CSS (opsional) -->
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -19,11 +19,11 @@
           id="taskInput"
           type="text"
           placeholder="Tambah tugas..."
-          class="flex-1 border rounded-l-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="flex-1 border rounded-l-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
         />
         <button
           id="addTaskBtn"
-          class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600"
+          class="bg-orange-500 text-white px-4 py-2 rounded-r-lg hover:bg-orange-700 transition duration-300 ease-in-out"
         >
           Tambah
         </button>
@@ -33,19 +33,19 @@
       <div class="flex justify-center gap-2 mb-4">
         <button
           data-filter="all"
-          class="filter-btn px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
+          class="filter-btn px-3 py-1 rounded bg-green-200 hover:bg-green-300"
         >
           All
         </button>
         <button
           data-filter="active"
-          class="filter-btn px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
+          class="filter-btn px-3 py-1 rounded bg-green-200 hover:bg-green-300"
         >
           Active
         </button>
         <button
           data-filter="completed"
-          class="filter-btn px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
+          class="filter-btn px-3 py-1 rounded bg-green-200 hover:bg-green-300"
         >
           Completed
         </button>
