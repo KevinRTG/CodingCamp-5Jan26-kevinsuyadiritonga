@@ -6,11 +6,19 @@ const taskCount = document.getElementById("taskCount");
 
 // Load data dari localStorage
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let filter = "all";
 
 // Render list
 function renderTasks() {
   taskList.innerHTML = "";
-  tasks.forEach((task, index) => {
+
+  let filteredTasks = tasks.filter(task => {
+    if (filter === "active") return !task.completed;
+    if (filter === "completed") return task.completed;
+    return true; // all
+  });
+
+  filteredTasks.forEach((task, index) => {
     const li = document.createElement("li");
     li.className = "flex items-center justify-between bg-gray-50 border rounded-lg px-3 py-2";
 
@@ -46,6 +54,14 @@ function renderTasks() {
 
   taskCount.textContent = tasks.length;
 }
+
+// Event listener untuk filter buttons
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    filter = btn.dataset.filter;
+    renderTasks();
+  });
+});
 
 // Simpan ke localStorage
 function saveTasks() {
