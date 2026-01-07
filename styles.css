@@ -1,0 +1,202 @@
+/* Global */
+body {
+  background-color: #1a202c; /* bg-gray-900 */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 768px; /* max-w-3xl */
+  background-color: #2d3748; /* bg-gray-800 */
+  box-shadow: 0 4px 6px rgba(128, 90, 213, 0.5);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+/* Title */
+.container h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e9d8fd;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Input Row */
+.input-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap; /* biar bisa turun ke bawah di layar kecil */
+}
+
+.input-row input[type="text"],
+.input-row input[type="date"] {
+  background-color: #1a202c;
+  border: 1px solid #805ad5;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  color: #d1d5db;
+  transition: all 0.3s ease-in-out;
+}
+
+.input-row input[type="text"]:focus,
+.input-row input[type="date"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #9f7aea;
+}
+
+.input-row input[type="text"] {
+  flex: 1;
+  min-width: 200px;
+}
+
+.input-row input[type="date"] {
+  width: 10rem;
+  min-width: 150px;
+}
+
+/* Add Button */
+#addBtn {
+  background-color: #9f7aea;
+  color: #000;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#addBtn:hover {
+  background-color: #6b46c1;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+#filterBtn,
+#deleteAllBtn {
+  font-weight: bold;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  flex: 1; /* biar rata di layar kecil */
+  text-align: center;
+}
+
+#filterBtn {
+  background-color: #1a202c;
+  color: #d6bcfa;
+  transition: color 0.3s ease-in-out;
+}
+
+#filterBtn:hover {
+  color: #e9d8fd;
+}
+
+#deleteAllBtn {
+  background-color: #d6bcfa;
+  color: #1a202c;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#deleteAllBtn:hover {
+  background-color: #9f7aea;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+thead tr {
+  background-color: #1a202c;
+  color: #d6bcfa;
+  text-align: left;
+}
+
+th, td {
+  padding: 0.5rem 1rem;
+}
+
+tbody td {
+  color: #e9d8fd;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ===================== Responsive ===================== */
+
+/* HP kecil (max 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .container h1 {
+    font-size: 1.25rem;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+
+  .input-row input,
+  #addBtn {
+    width: 100%;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  #filterBtn,
+  #deleteAllBtn {
+    width: 100%;
+  }
+
+  table th, table td {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+}
+
+/* Tablet (481px – 768px) */
+@media (max-width: 768px) {
+  .container {
+    max-width: 90%;
+  }
+
+  .input-row input[type="date"] {
+    width: 100%;
+  }
+
+  .action-buttons {
+    flex-direction: row;
+  }
+
+  #filterBtn,
+  #deleteAllBtn {
+    flex: 1;
+  }
+}
+
+/* Laptop (769px – 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 95%;
+  }
+}
