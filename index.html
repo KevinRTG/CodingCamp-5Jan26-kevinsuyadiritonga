@@ -1,37 +1,30 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Todo List</title>
-    <!-- Link ke CSS -->
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>Todo List</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Todo List</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Todo List</h1>
 
-      <!-- Input Row -->
-      <div class="input-row">
-        <input
-          id="taskInput"
-          type="text"
-          placeholder="Add a todo . . ."
-        />
-        <input
-          id="dateInput"
-          type="date"
-        />
-        <button id="addBtn">+ ADD</button>
-      </div>
+    <!-- Input Row -->
+    <div class="input-row">
+      <input id="taskInput" type="text" placeholder="Add a todo . . ." />
+      <input id="dateInput" type="date" />
+      <button id="addBtn">+ ADD</button>
+    </div>
 
-      <!-- Action Buttons -->
-      <div class="action-buttons">
-        <button id="filterBtn">FILTER</button>
-        <button id="deleteAllBtn">DELETE ALL</button>
-      </div>
+    <!-- Action Buttons -->
+    <div class="action-row">
+      <button id="filterBtn">FILTER</button>
+      <button id="deleteAllBtn">DELETE ALL</button>
+    </div>
 
-      <!-- Table -->
+    <!-- Table -->
+    <div class="table-wrapper">
       <table>
         <thead>
           <tr>
@@ -43,13 +36,13 @@
         </thead>
         <tbody id="taskTable">
           <tr>
-            <td colspan="4">No task found</td>
+            <td colspan="4" class="empty">No task found</td>
           </tr>
         </tbody>
       </table>
     </div>
+  </div>
 
-    <!-- Script -->
-    <script src="app.js"></script>
-  </body>
+  <script src="app.js"></script>
+</body>
 </html>

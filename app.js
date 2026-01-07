@@ -6,7 +6,7 @@ const deleteAllBtn = document.getElementById("deleteAllBtn");
 const taskTable = document.getElementById("taskTable");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-let filterStatus = "all"; // all | active | completed
+let filterStatus = "all";
 
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -23,7 +23,7 @@ function renderTasks() {
   });
 
   if (filtered.length === 0) {
-    taskTable.innerHTML = `<tr><td colspan="4" class="bg-gray-900 text-center text-lg text-purple-200 py-4">No task found</td></tr>`;
+    taskTable.innerHTML = `<tr><td colspan="4" class="empty">No task found</td></tr>`;
     return;
   }
 
@@ -31,14 +31,15 @@ function renderTasks() {
     const row = document.createElement("tr");
 
     row.innerHTML = `
-      <td class="bg-gray-900 text-purple-200 px-4 py-2">${task.text}</td>
-      <td class="bg-gray-900 text-purple-200 px-4 py-2">${task.date || "-"}</td>
-      <td class="bg-gray-900 text-purple-200 px-4 py-2">${task.completed ? "✅ Completed" : "⏳ Active"}</td>
-      <td class="bg-gray-900 px-4 py-2 space-x-2">
-        <button class="text-gray-200 hover:underline" onclick="toggleStatus(${index})">Toggle</button>
-        <button class="text-red-600 hover:underline" onclick="deleteTask(${index})">Delete</button>
-      </td>
-    `;
+  <td>${task.text}</td>
+  <td>${task.date || "-"}</td>
+  <td>${task.completed ? "✅ Completed" : "⏳ Active"}</td>
+  <td>
+    <button class="task-action-btn" onclick="toggleStatus(${index})">Toggle</button>
+    <button class="task-action-btn" onclick="deleteTask(${index})">Delete</button>
+  </td>
+`;
+
     taskTable.appendChild(row);
   });
 }
