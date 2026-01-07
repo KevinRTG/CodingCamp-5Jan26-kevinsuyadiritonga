@@ -31,14 +31,14 @@ function renderTasks() {
     const row = document.createElement("tr");
 
     row.innerHTML = `
-  <td>${task.text}</td>
-  <td>${task.date || "-"}</td>
-  <td>${task.completed ? "✅ Completed" : "⏳ Active"}</td>
-  <td>
-    <button class="task-action-btn" onclick="toggleStatus(${index})">Toggle</button>
-    <button class="task-action-btn" onclick="deleteTask(${index})">Delete</button>
-  </td>
-`;
+    <td>${task.text}</td>
+    <td>${task.date || "-"}</td>
+    <td>${task.completed ? "✅ Completed" : "⏳ Active"}</td>
+    <td>
+      <button class="task-action-btn" onclick="toggleStatus(${index})">Toggle</button>
+      <button class="task-action-btn" onclick="deleteTask(${index})">Delete</button>
+    </td>
+  `;
 
     taskTable.appendChild(row);
   });
