@@ -1,88 +1,84 @@
-// Ambil elemen
 const taskInput = document.getElementById("taskInput");
-const addTaskBtn = document.getElementById("addTaskBtn");
-const taskList = document.getElementById("taskList");
-const taskCount = document.getElementById("taskCount");
+const dateInput = document.getElementById("dateInput");
+const addBtn = document.getElementById("addBtn");
+const filterBtn = document.getElementById("filterBtn");
+const deleteAllBtn = document.getElementById("deleteAllBtn");
+const taskTable = document.getElementById("taskTable");
 
-// Load data dari localStorage
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-let filter = "all";
+let filterStatus = "all"; // all | active | completed
 
-// Render list
-function renderTasks() {
-  taskList.innerHTML = "";
-
-  let filteredTasks = tasks.filter(task => {
-    if (filter === "active") return !task.completed;
-    if (filter === "completed") return task.completed;
-    return true; // all
-  });
-
-  filteredTasks.forEach((task, index) => {
-    const li = document.createElement("li");
-    li.className = "flex items-center justify-between bg-gray-50 border rounded-lg px-3 py-2";
-
-    // Checkbox
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.checked = task.completed;
-    checkbox.className = "mr-2 h-4 w-4 text-blue-500";
-    checkbox.addEventListener("change", () => {
-      tasks[index].completed = checkbox.checked;
-      saveTasks();
-    });
-
-    // Label
-    const span = document.createElement("span");
-    span.textContent = task.text;
-    span.className = task.completed ? "line-through text-red-400 flex-1" : "flex-1";
-
-    // Delete button
-    const delBtn = document.createElement("button");
-    delBtn.textContent = "❌";
-    delBtn.className = "ml-2 text-red-500 hover:text-red-700";
-    delBtn.addEventListener("click", () => {
-      tasks.splice(index, 1);
-      saveTasks();
-    });
-
-    li.appendChild(checkbox);
-    li.appendChild(span);
-    li.appendChild(delBtn);
-    taskList.appendChild(li);
-  });
-
-  taskCount.textContent = tasks.length;
-}
-
-// Event listener untuk filter buttons
-document.querySelectorAll(".filter-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    filter = btn.dataset.filter;
-    renderTasks();
-  });
-});
-
-// Simpan ke localStorage
 function saveTasks() {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   renderTasks();
 }
 
-// Tambah task
-addTaskBtn.addEventListener("click", () => {
+function renderTasks() {
+  taskTable.innerHTML = "";
+
+  const filtered = tasks.filter(task => {
+    if (filterStatus === "active") return !task.completed;
+    if (filterStatus === "completed") return task.completed;
+    return true;
+  });
+
+  if (filtered.length === 0) {
+    taskTable.innerHTML = `<tr><td colspan="4" class="bg-gray-900 text-center text-lg text-purple-200 py-4">No task found</td></tr>`;
+    return;
+  }
+
+  filtered.forEach((task, index) => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td class="bg-gray-900 text-purple-200 px-4 py-2">${task.text}</td>
+      <td class="bg-gray-900 text-purple-200 px-4 py-2">${task.date || "-"}</td>
+      <td class="bg-gray-900 text-purple-200 px-4 py-2">${task.completed ? "✅ Completed" : "⏳ Active"}</td>
+      <td class="bg-gray-900 px-4 py-2 space-x-2">
+        <button class="text-gray-200 hover:underline" onclick="toggleStatus(${index})">Toggle</button>
+        <button class="text-red-600 hover:underline" onclick="deleteTask(${index})">Delete</button>
+      </td>
+    `;
+    taskTable.appendChild(row);
+  });
+}
+
+function addTask() {
   const text = taskInput.value.trim();
-  if (text) {
-    tasks.push({ text, completed: false });
-    taskInput.value = "";
+  const date = dateInput.value;
+  if (!text) return;
+
+  tasks.push({ text, date, completed: false });
+  taskInput.value = "";
+  dateInput.value = "";
+  saveTasks();
+}
+
+function toggleStatus(index) {
+  tasks[index].completed = !tasks[index].completed;
+  saveTasks();
+}
+
+function deleteTask(index) {
+  tasks.splice(index, 1);
+  saveTasks();
+}
+
+function deleteAll() {
+  if (confirm("Hapus semua tugas?")) {
+    tasks = [];
     saveTasks();
   }
-});
+}
 
-// Enter key untuk tambah
-taskInput.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") addTaskBtn.click();
-});
+function toggleFilter() {
+  filterStatus = filterStatus === "all" ? "active" : filterStatus === "active" ? "completed" : "all";
+  filterBtn.textContent = `FILTER (${filterStatus.toUpperCase()})`;
+  renderTasks();
+}
 
-// Init
+addBtn.addEventListener("click", addTask);
+deleteAllBtn.addEventListener("click", deleteAll);
+filterBtn.addEventListener("click", toggleFilter);
+
 renderTasks();
