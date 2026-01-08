@@ -158,6 +158,29 @@ td {
   border-color: #9333ea;
 }
 
+/* Toast Notification */
+.toast {
+  position: fixed;
+  bottom: 20px; /* bisa diganti top:20px kalau mau di atas */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ef4444; /* merah untuk error */
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, bottom 0.4s ease;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  bottom: 40px; /* animasi naik sedikit */
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -166,22 +189,33 @@ td {
   }
 
   .input-row {
-    flex-direction: row;
+    flex-direction: column; /* ubah jadi kolom di mobile */
+    gap: 12px;
   }
 
   input[type="text"],
-  input[type="date"],
+  input[type="date"] {
+    width: 92%;
+  }
+
   #addBtn {
     width: 100%;
   }
 
   .action-row {
     flex-direction: column;
-    gap: 12px; /* mobile: tombol vertikal dengan jarak */
+    gap: 12px;
   }
+
   #filterBtn,
   #deleteAllBtn {
     width: 100%;
+  }
+
+  .task-action-btn {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 8px;
   }
 }
 
@@ -190,12 +224,19 @@ td {
   td {
     padding: 8px;
     font-size: 14px;
+    max-width: 120px;
   }
 
   #addBtn,
   #filterBtn,
-  #deleteAllBtn {
+  #deleteAllBtn,
+  .task-action-btn {
     font-size: 14px;
     padding: 10px;
+  }
+
+  .task-action-btn {
+    display: block;
+    width: 100%;
   }
 }

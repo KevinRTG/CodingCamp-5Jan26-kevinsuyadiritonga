@@ -1,48 +1,51 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Todo List</title>
-  <link rel="stylesheet" href="./css/style.css" />
-</head>
-<body>
-  <div class="container">
-    <h1>Todo List</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Todo List</h1>
 
-    <!-- Input Row -->
-    <div class="input-row">
-      <input id="taskInput" type="text" placeholder="Add a todo . . ." />
-      <input id="dateInput" type="date" />
-      <button id="addBtn">+ ADD</button>
+      <!-- Input Row -->
+      <div class="input-row">
+        <input id="taskInput" type="text" placeholder="Add a todo . . ." />
+        <input id="dateInput" type="date" />
+        <button id="addBtn">+ ADD</button>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-row">
+        <button id="filterBtn">FILTER</button>
+        <button id="deleteAllBtn">DELETE ALL</button>
+      </div>
+
+      <!-- Table -->
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>TASK</th>
+              <th>DUE DATE</th>
+              <th>STATUS</th>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody id="taskTable">
+            <tr>
+              <td colspan="4" class="empty">No task found</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    <!-- Action Buttons -->
-    <div class="action-row">
-      <button id="filterBtn">FILTER</button>
-      <button id="deleteAllBtn">DELETE ALL</button>
-    </div>
-
-    <!-- Table -->
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>TASK</th>
-            <th>DUE DATE</th>
-            <th>STATUS</th>
-            <th>ACTIONS</th>
-          </tr>
-        </thead>
-        <tbody id="taskTable">
-          <tr>
-            <td colspan="4" class="empty">No task found</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <script src="./js/app.js"></script>
-</body>
+    <script src="./js/app.js"></script>
+    
+    <!-- Toast Container -->
+    <div id="toast" class="toast"></div>
+  </body>
 </html>

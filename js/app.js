@@ -46,17 +46,16 @@ function renderTasks() {
 
 function addTask() {
   const text = taskInput.value.trim();
-  const date = dateInput.value;
-  if (!text) return;
+  const date = dateInput.value.trim();
+
+  if (!text || !date) {
+    showToast("Please fill in all fields!");
+    return;
+  }
 
   tasks.push({ text, date, completed: false });
   taskInput.value = "";
   dateInput.value = "";
-  saveTasks();
-}
-
-function toggleStatus(index) {
-  tasks[index].completed = !tasks[index].completed;
   saveTasks();
 }
 
@@ -83,3 +82,14 @@ deleteAllBtn.addEventListener("click", deleteAll);
 filterBtn.addEventListener("click", toggleFilter);
 
 renderTasks();
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  // Hilang otomatis setelah 3 detik
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 4000);
+}
