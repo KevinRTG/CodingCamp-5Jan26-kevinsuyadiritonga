@@ -123,7 +123,11 @@ thead {
 }
 
 td {
-  border-top: 1px solid #374151;
+  border-top: 0px solid #374151;
+}
+
+tbody {
+  background-color: #111827;
 }
 
 .empty {
