@@ -173,7 +173,7 @@ tbody {
   padding: 12px 20px;
   border-radius: 6px;
   font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease, bottom 0.4s ease;
@@ -185,7 +185,6 @@ tbody {
   bottom: 40px; /* animasi naik sedikit */
 }
 
-
 /* Responsive */
 @media (max-width: 768px) {
   h1 {
@@ -193,7 +192,7 @@ tbody {
   }
 
   .input-row {
-    flex-direction: column; /* ubah jadi kolom di mobile */
+    flex-direction: column;
     gap: 12px;
   }
 
@@ -216,6 +215,10 @@ tbody {
     width: 100%;
   }
 
+  .taskTable {
+    font-size: 14px;
+  }
+
   .task-action-btn {
     width: 100%;
     margin-right: 0;
@@ -229,6 +232,13 @@ tbody {
     padding: 8px;
     font-size: 14px;
     max-width: 120px;
+  }
+
+  #task-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    max-width: none;
   }
 
   #addBtn,

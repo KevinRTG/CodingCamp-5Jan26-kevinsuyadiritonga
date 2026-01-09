@@ -22,7 +22,7 @@ function renderTasks() {
     .map((task, i) => ({ task, i }))
     .filter(({ task }) => {
       if (filterStatus === "active") return !task.completed;
-      if (filterStatus === "completed") return task.completed;
+      if (filterStatus === "done") return task.completed;
       return true;
     });
 
@@ -35,9 +35,9 @@ function renderTasks() {
     const row = document.createElement("tr");
 
     row.innerHTML = `
-      <td>${task.text}</td>
+      <td id="task-text">${task.text}</td>
       <td>${task.date || "-"}</td>
-      <td>${task.completed ? "️✅ Completed" : "🟦 Active"}</td>
+      <td>${task.completed ? "️✅ Done" : "🟦 Active"}</td>
       <td>
         <button class="task-action-btn" onclick="toggleStatus(${i})">Toggle</button>
         <button class="task-action-btn" onclick="editTask(${i})">Edit</button>
